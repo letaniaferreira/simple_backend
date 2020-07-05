@@ -1,7 +1,9 @@
 from flask import Flask
 from flask import request
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 my_dict = {
     'jota': {
@@ -14,9 +16,10 @@ my_dict = {
     }
 }
 
+
 @app.route('/')
 def hello_world():
-    return 'Hello World!'
+    return {'message': 'Hello World!'}
 
 
 @app.route('/message')
