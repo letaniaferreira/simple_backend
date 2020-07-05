@@ -3,12 +3,6 @@ from flask import request
 
 app = Flask(__name__)
 
-
-@app.route('/')
-def hello_world():
-    return 'Hello World!'
-
-
 my_dict = {
     'jota': {
         'name': 'Jota',
@@ -19,6 +13,10 @@ my_dict = {
         'local de compra': 'mercado de namoesposas'
     }
 }
+
+@app.route('/')
+def hello_world():
+    return 'Hello World!'
 
 
 @app.route('/message')
@@ -31,9 +29,11 @@ def get_name():
     # 1. get username from client
     username = request.args.get('username')
     # 2. query dict to see if it has username
-    result = my_dict[username]
+    no_such_user = {'message': 'user not available'}
+    result = my_dict.get(username)
+    if result is None:
+        return no_such_user, 404
     # 3. return result
-
     return result
 
 
