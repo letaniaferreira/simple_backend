@@ -5,7 +5,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-my_dict = {
+all_users = {
     'jota': {
         'name': 'Jota',
         'local de compra': 'mercado de maridos'
@@ -24,7 +24,11 @@ def hello_world():
 
 @app.route('/users')
 def get_users():
-    return my_dict
+    users = []
+    for user in all_users.values():
+        users.append(user)
+
+    return users
 
 
 @app.route('/name')
@@ -33,7 +37,7 @@ def get_name():
     username = request.args.get('username')
     # 2. query dict to see if it has username
     no_such_user = {'message': 'user not available'}
-    result = my_dict.get(username)
+    result = all_users.get(username)
     if result is None:
         return no_such_user, 404
     # 3. return result
