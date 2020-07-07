@@ -22,8 +22,8 @@ def hello_world():
     return {'message': 'Hello World!'}
 
 
-@app.route('/message')
-def message():
+@app.route('/users')
+def get_users():
     return my_dict
 
 
