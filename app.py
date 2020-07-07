@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flask import request
 from flask_cors import CORS
 
@@ -23,6 +23,10 @@ def hello_world():
 
 
 @app.route('/users')
+def get_users_jsonified():
+    return jsonify(get_users())
+
+
 def get_users():
     users = []
     for user in all_users.values():
