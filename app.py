@@ -6,11 +6,11 @@ app = Flask(__name__)
 CORS(app)
 
 all_users = {
-    'jota': {
-        'name': 'Jota',
+    'Jota': {
+        'name': 'jota',
         'local de compra': 'mercado de maridos'
     },
-    'leta': {
+    'Leta': {
         'name': 'leta',
         'local de compra': 'mercado de namoesposas'
     }
@@ -35,7 +35,7 @@ def get_users():
     return users
 
 
-@app.route('/name')
+@app.route('/username')
 def get_name():
     # 1. get username from client
     username = request.args.get('username')
